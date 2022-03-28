@@ -1,0 +1,70 @@
+alter session set "_oracle_script"=true;  
+create user gestion identified by gestion;
+GRANT CONNECT, RESOURCE, DBA TO gestion;
+
+--1
+SELECT ROUND(AVG(nvl(f.DTO,0)),1) 
+FROM FACTURAS f 
+WHERE f.DTO IS NOT NULL ;
+
+--2
+SELECT ROUND(AVG(f.DTO),1) 
+FROM FACTURAS f ;
+
+--3
+SELECT ROUND(AVG(nvl(f.DTO,0)),1) 
+FROM FACTURAS f ;
+
+--4
+SELECT COUNT(f.CODFAC) 
+FROM FACTURAS f ;
+
+--5
+SELECT COUNT(p.CODPUE) 
+FROM PUEBLOS p , PROVINCIAS p2 
+WHERE p.CODPRO = p2.CODPRO 
+AND LOWER(p2.NOMBRE)LIKE '%valencia%' ;
+
+--6
+SELECT SUM(a.STOCK*a.PRECIO) 
+FROM ARTICULOS a ;
+
+--7
+SELECT COUNT(p.CODPUE) 
+FROM PUEBLOS p , CLIENTES c 
+WHERE p.CODPUE = c.CODPUE 
+AND c.CODPOSTAL LIKE '12%';
+
+--8
+SELECT MAX(a.STOCK), MIN(a.STOCK)
+FROM ARTICULOS a 
+WHERE a.PRECIO 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
